@@ -2,7 +2,7 @@
 
 ## 60-second introduction
 
-I built a UI test automation portfolio project for the public Bhakti Lounge website using Python, Playwright and pytest. I used the Page Object Model to separate test scenarios from page-specific locators and actions. The portfolio suite covers critical navigation, event discovery, contact information, the newsletter UI and a mobile viewport. Tests run in parallel, while GitHub Actions runs smoke checks in Chromium and Firefox and a scheduled regression suite. Failure evidence includes traces, screenshots and videos. Because this is a production website, the tests are non-destructive and never submit forms or create bookings.
+I built a UI test automation portfolio project for the public Bhakti Lounge website using Python, Playwright and pytest. I used the Page Object Model to separate test scenarios from page-specific locators and actions. The portfolio suite covers critical navigation, event discovery, contact information, the newsletter UI, social links, Eventbrite booking links and a mobile viewport. GitHub Actions runs smoke checks sequentially in Chromium, Firefox and WebKit, plus a scheduled regression suite in Chromium. Failure evidence includes traces, screenshots and videos. Because this is a production website, the tests are non-destructive and never submit forms or create bookings.
 
 ## Architecture
 
@@ -50,7 +50,7 @@ It records a known product defect without hiding it. I use strict mode so that i
 
 > What is CI?
 
-Continuous Integration automatically checks changes when code is pushed or a pull request is created. This project installs the environment, runs linting and executes smoke tests in Chromium and Firefox through GitHub Actions.
+Continuous Integration automatically checks changes when code is pushed or a pull request is created. This project installs the environment, runs linting and executes smoke tests sequentially in Chromium, Firefox and WebKit through GitHub Actions. The sequential setup reduces unnecessary load on the public website.
 
 > How do you debug CI failures?
 
