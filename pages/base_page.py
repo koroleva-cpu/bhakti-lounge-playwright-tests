@@ -2,6 +2,7 @@ import re
 from urllib.parse import urljoin
 
 from playwright.sync_api import Locator, Page, expect
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
 
 class BasePage:
@@ -26,10 +27,17 @@ class BasePage:
         return self.page.locator("footer").first
 
     def open(self, path: str = "") -> None:
-        response = self.page.goto(urljoin(self.base_url, path.lstrip("/")))
+        url = urljoin(self.base_url, path.lstrip("/"))
+        response = None
+        for attempt in range(2):
+            try:
+                response = self.page.goto(url, wait_until="domcontentloaded", timeout=45_000)
+                break
+            except PlaywrightTimeoutError:
+                if attempt == 1:
+                    raise
         assert response is not None, "The browser did not receive an HTTP response"
         assert response.ok, f"Page returned HTTP {response.status}: {response.url}"
-        self.page.wait_for_load_state("domcontentloaded")
 
     def assert_title_contains(self, expected: str) -> None:
         expect(self.page).to_have_title(re.compile(re.escape(expected), re.IGNORECASE))

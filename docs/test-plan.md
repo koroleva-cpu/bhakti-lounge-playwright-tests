@@ -29,7 +29,7 @@ The site has duplicated desktop/mobile markup and frequently changing event cont
 ## CI policy
 
 - Pull requests: smoke suite in Chromium and Firefox, plus Ruff.
-- Weekdays: full regression in Chromium with three parallel workers.
+- Weekdays: full regression in Chromium with two parallel workers to avoid overloading the public site.
 - Failure evidence: Playwright trace, screenshot and video uploaded as artifacts.
 - Recommended branch rule: require `smoke (chromium)`, `smoke (firefox)` and `lint` before merge.
 
