@@ -20,7 +20,7 @@ Portfolio-grade, non-destructive UI automation for the public [Bhakti Lounge](ht
 30 passed, 1 xfailed
 ```
 
-The portfolio suite is stable in Chromium locally. It includes 21 parameterized social-link journeys (seven main pages multiplied by three networks), validation of every visible Eventbrite booking link, and a real booking-navigation check. The expected failure documents a reproducible product defect rather than an automation failure. Educational examples are retained in the repository but excluded from CI through the `learning` marker.
+The portfolio suite is stable in Chromium locally. CI smoke checks pass in Chromium, Firefox and WebKit (the browser engine used by Safari). It includes 21 parameterized social-link journeys (seven main pages multiplied by three networks), validation of every visible Eventbrite booking link, and a real booking-navigation check. The expected failure documents a reproducible product defect rather than an automation failure. Educational examples are retained in the repository but excluded from CI through the `learning` marker.
 
 ## Project structure
 
@@ -99,7 +99,7 @@ The suite records a currently reproducible footer phone-number mismatch as a str
 
 ## CI/CD options
 
-The included GitHub Actions setup is the best fit for a public portfolio: free for public repositories, visible to recruiters and close to the code review workflow.
+The included GitHub Actions setup runs smoke checks on pushes and pull requests, and a broader regression suite on a weekday schedule. The repository can remain private while access is shared selectively with reviewers or collaborators.
 
 Alternative options:
 
