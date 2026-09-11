@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bhakti-lounge-playwright-tests"
+version = "0.1.0"
+description = "Portfolio-grade UI test automation for the Bhakti Lounge website"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "playwright>=1.52,<2",
+  "pytest>=8.3,<9",
+  "pytest-playwright>=0.7,<1",
+  "pytest-xdist>=3.6,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.11,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --tracing=retain-on-failure --screenshot=only-on-failure --video=retain-on-failure"
+markers = [
+  "smoke: critical checks suitable for every pull request",
+  "regression: broader checks for scheduled or release runs",
+  "mobile: checks executed with a mobile-sized viewport",
+  "known_issue: reproducible product defect kept visible as xfail",
+  "learning: educational examples excluded from portfolio CI runs",
+  "social: checks that open external social-media links",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.setuptools.packages.find]
+include = ["pages*"]
