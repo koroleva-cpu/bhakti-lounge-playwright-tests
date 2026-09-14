@@ -3,6 +3,8 @@
 Portfolio-grade, non-destructive UI automation for the public [Bhakti Lounge](https://www.bhaktilounge.org.nz/) website, built with Python, Playwright and pytest.
 
 > This is an independent educational project. It is not affiliated with Bhakti Lounge. Tests do not submit forms, create bookings or make purchases on the production website.
+>
+> The site owner has given permission to use the website materials in this portfolio project.
 
 ## What this project demonstrates
 
@@ -99,7 +101,7 @@ The suite records a currently reproducible footer phone-number mismatch as a str
 
 ## CI/CD options
 
-The included GitHub Actions setup runs smoke checks on pushes and pull requests, and a broader regression suite on a weekday schedule. The repository can remain private while access is shared selectively with reviewers or collaborators.
+The included GitHub Actions setup runs smoke checks on pushes and pull requests, and a broader regression suite on a weekday schedule. Public workflow results make the current project status easy to review alongside the code.
 
 Alternative options:
 
@@ -112,7 +114,7 @@ This is continuous integration rather than deployment: a test repository has no 
 
 ## Learning notes
 
-Russian-language Playwright fundamentals are in [docs/playwright-basics-ru.md](docs/playwright-basics-ru.md). The test scope and risk model are in [docs/test-plan.md](docs/test-plan.md). An [English interview guide](docs/interview-guide-en.md) and a [LinkedIn post draft](docs/linkedin-post-ru.md) are included as preparation materials.
+Russian-language Playwright fundamentals are in [docs/playwright-basics-ru.md](docs/playwright-basics-ru.md). The test scope and risk model are in [docs/test-plan.md](docs/test-plan.md).
 
 ## Roadmap
 
