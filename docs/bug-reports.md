@@ -53,3 +53,31 @@ The label `for` value should match one unique input `id`.
 ### Impact
 
 Screen-reader users may not receive a useful label for the field. Role-based automation cannot locate it by the expected accessible name and must use a scoped implementation locator as a temporary workaround.
+
+## BL-003 — Two event cards share one Eventbrite destination
+
+**Severity:** High
+**Status:** Fixed and retested (2026-09-28)
+**Area:** Event Booking
+
+### Steps to reproduce
+
+1. Open `https://www.bhaktilounge.org.nz/event-booking/`.
+2. Find the cards titled `Immersive Yoga: Oceanic Flow` and `Lessons from Anxiety`.
+3. Compare the destinations of their visible `BOOK HERE` links.
+
+### Actual result
+
+Both cards link to the Eventbrite page for `Immersive Yoga: Oceanic Flow`.
+
+### Expected result
+
+Each event card should link to the Eventbrite page for its own event.
+
+### Impact
+
+A user attempting to book `Lessons from Anxiety` is sent to a different event. The uniqueness check is recorded as a strict `xfail`, so a site fix produces `XPASS` and prompts review.
+
+### Retest
+
+Retested on 2026-09-28: each event card now links to its own Eventbrite page. The strict `xfail` produced `XPASS`, confirming the fix. The uniqueness check was returned to the regular booking-link test in `tests/test_event_booking.py` as a regression guard.
