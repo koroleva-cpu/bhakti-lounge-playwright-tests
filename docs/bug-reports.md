@@ -3,7 +3,7 @@
 ## BL-001 — Footer phone text and call target do not match
 
 **Severity:** Medium  
-**Status:** Reproducible  
+**Status:** Fixed and retested (2026-10-29)\
 **Area:** Site-wide footer
 
 ### Steps to reproduce
@@ -23,7 +23,15 @@ The visible phone number and `tel:` target should contain the same digits.
 
 ### Impact
 
-A user clicking the link may call a different number from the one shown. The automated regression is recorded as a strict `xfail`, so an unexpected fix produces `XPASS` and prompts review.
+A user clicking the link may call a different number from the one shown. The automated regression was recorded as a strict `xfail`, so an unexpected fix produced `XPASS` and prompted review.
+
+### Retest
+
+**Retested:** 2026-10-29, Chromium
+
+**Result:** Fixed. The footer now shows a different number, and the visible text (`+64 20 4131 1660`) matches the `tel:` link target (`tel:+642041311660`).
+
+**Automation:** The nightly run first reported `XPASS(strict)` on 2026-10-13. The `xfail` marker was removed, and `test_footer_phone_text_matches_link` now runs as a regular regression check.
 
 ## BL-002 — Newsletter label is not associated with the email field
 
